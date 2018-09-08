@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Rui Fang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -27,7 +27,7 @@ import rosegraphics as rg
 # ----------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_draw_parallel_lines()
+    # run_test_draw_parallel_lines()
     run_test_draw_lines()
 
 
@@ -66,6 +66,7 @@ def run_test_draw_parallel_lines():
     draw_parallel_lines(12, left_most_point, 470, window2)
 
     window2.close_on_mouse_click()
+    return window1
 
 
 def draw_parallel_lines(n, point, length, window):
@@ -95,8 +96,23 @@ def draw_parallel_lines(n, point, length, window):
       :type length: int
       :type window: rg.RoseWindow
     """
+    x1 = point.x
+    y1 = point.y
+
+    for k in range(n):
+        p1 = rg.Point(x1, y1)
+        p2 = rg.Point(x1 + length, y1)
+        line = rg.Line(p1, p2)
+        y1 = y1 + 30
+        line.attach_to(window)
+        window.render()
+
+
+
+
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -134,6 +150,18 @@ def run_test_draw_lines():
 
 
 def draw_lines(n, point, window):
+    x1 = point.x
+    y1 = point.y
+    Vy = 100
+    for k in range(n):
+        p1 = rg.Point(x1, y1)
+        p2 = rg.Point(x1 + 100, y1 + Vy)
+        line = rg.Line(p1, p2)
+        Vy = Vy - (200 / n)
+        line.attach_to(window)
+        window.render()
+
+
     """
     What comes in: The three arguments are:
       -- A integer n that is at least 2.
@@ -161,7 +189,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
