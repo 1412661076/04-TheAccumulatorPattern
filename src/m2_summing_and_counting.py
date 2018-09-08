@@ -196,15 +196,14 @@ def run_test_count_sines_vs_cosines():
 
 
 def count_sines_vs_cosines(m):
-    answer1 = 0
-    answer2 = 0
-
-    for i in range(m + 1):
+    answer = 0
+    for i in range(m):
         if math.sin(-i) > math.cos(-i):
-            answer1 = answer1 + 1
-        elif math.sin(i) > math.cos(-i):
-            answer2 = answer2 + 1
-        answer = answer1 + answer2
+            answer = answer + 1
+        if math.sin(i) > math.cos(-i):
+            answer = answer + 1
+    if math.sin(0) > math.cos(0):
+        answer = answer + 1
     return answer
 
 
